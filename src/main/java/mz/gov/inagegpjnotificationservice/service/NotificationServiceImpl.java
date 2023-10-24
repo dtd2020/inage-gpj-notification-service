@@ -26,22 +26,8 @@ public class NotificationServiceImpl implements INotificationService{
 
     @Override
     public String sendNotification(Notification notification) {
-//ISendEngine eng = null;
-//        for (ISendEngine en: sendEngine) {
-//          if(en.meanType()==notification.getSendMeanType()){
-//              eng=en;
-//          }
-//        }
-//        assert eng != null;
-//        eng.sendMessage(notification);
         var sender = sendEngine.stream().filter(eng->eng.meanType() == notification.getSendMeanType()).findFirst().orElseThrow();
         return sender.sendMessage(notification);
-
-//        if (SendMeanType.SMS == notification.getSendMeanType()){
-//
-//        }else {
-//
-//        }
     }
 
     @Override
